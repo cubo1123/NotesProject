@@ -87,8 +87,10 @@ class AddEditNoteViewModel @Inject constructor(
                                 title = noteTitle.value.text,
                                 content = noteContent.value.text,
                                 timestamp = System.currentTimeMillis(),
-                                color = noteColor.value)
+                                color = noteColor.value,
+                                id = currentNoteId)
                         )
+                        _eventFlow.emit(UiEvent.SaveNote)
                     }catch (e : InvalidNoteException){
                         _eventFlow.emit(
                             UiEvent.ShowSnackBar(
